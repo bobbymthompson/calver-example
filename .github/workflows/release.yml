@@ -16,6 +16,8 @@ jobs:
   deploy-development:
     name: Deploy Development Environment
     environment: development
+    needs:
+      - build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,6 +28,9 @@ jobs:
   deploy-staging:
     name: Deploy Staging Environment
     environment: staging
+    needs:
+      - build
+      - deploy-development
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -46,6 +51,9 @@ jobs:
   deploy-production:
     name: Deploy Production Environment
     environment: production
+    needs:
+      - build
+      - deploy-staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
