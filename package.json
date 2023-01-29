@@ -1,0 +1,17 @@
+{
+  "name": "calver-example",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "build": "echo \"Executed Build\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbymthompson/calver-example.git"
+  },
+  "author": "Bobby Thompson <bobby.m.thompson@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/bobbymthompson/calver-example/issues"
+  },
+  "homepage": "https://github.com/bobbymthompson/calver-example#readme"
+}
