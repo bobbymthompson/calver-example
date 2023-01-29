@@ -1,5 +1,8 @@
 # Details
 
-Repo to learn how [calver](https://github.com/StephaneBour/actions-calver) works
+Playground repo for setting up deployments/environments
 
-also environments
+Uses:
+
+- [calver](https://github.com/StephaneBour/actions-calver)
+-
