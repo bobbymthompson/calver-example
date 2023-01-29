@@ -1,0 +1,29 @@
+# Pull Requests to Main
+name: Pull Requests to Main
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Calver Release
+        uses: StephaneBour/actions-calver@master
+        id: calver
+        with:
+          date_format: "%Y-%m-%d"
+          release_branch: main
+          release: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy
+        env:
+          VERSION: ${{ steps.calver.outputs.release }}
+        run: ./deploy ${VERSION}
