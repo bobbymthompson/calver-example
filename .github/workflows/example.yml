@@ -17,13 +17,13 @@ jobs:
         uses: StephaneBour/actions-calver@master
         id: calver
         with:
-          date_format: "%Y-%m-%d"
+          date_format: "%Y.%m.%d"
           release_branch: main
           release: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CALVER_EX_CONTENTS_PAT }}
 
-      - name: Deploy
-        env:
-          VERSION: ${{ steps.calver.outputs.release }}
-        run: ./deploy ${VERSION}
+      # - name: Deploy
+      #   env:
+      #     VERSION: ${{ steps.calver.outputs.release }}
+      #   run: ./deploy ${VERSION}
