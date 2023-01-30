@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build
+    environment: Development
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Environment
+        run: echo "Current environment '${{ vars.ENVIRONMENT_TYPE }}'"
+
+  test:
+    name: Execute Tests
+    environment: Development
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Execute Tests
+        run: echo 'Execute Tests'
